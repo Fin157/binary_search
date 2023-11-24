@@ -1,0 +1,28 @@
+Trivial algorithm:
+- Approximate time complexity:
+-> Best - O(1) (The item is found in the first iteration)
+-> Average - O(n/2) (Considering an exactly equal distribution of the target value in the list, the average position of the value in the list is in the middle of it)
+-> Worst - O(n) (The item is at the end of the list or not present in the list)
+
+Binary search:
+- Approximate time complexity:
+-> [Best, Average, Worst] - O(log(n)) (We need to 'slice' the list log(n) times no matter what)
+
+With 10^18 items in the searched list on a computer capable of performing 10^9 operations per second:
+- Trivial O(n) algorithm -> Depends on the value's position in the list
+-> Best - Some tiny portion of time
+-> Average - 5 * 10^17 operations =>> 5 * 10^8 sec => 15.8 years
+-> Worst - 10^18 operations =>> 10^9 sec => 31.7 years
+- Binary search -> [log2(10^18) operations = approx. 60 operations] => 60 ns
+
+In practice (ran on my 1.8GHz laptop) with 10^18 items and different target value:
+- Trivial algorithm
+-> Actually tested:
+    - 10^6 - 330 ms
+    - 10^9 - 330 sec
+-> Hypothetically:
+    - 10^12 - approx. 4 days
+    - 10^15 - approx. 3800 days
+    - 10^18 - I'll be retired by the time this finishes executing
+- Binary search
+-> So fast it doesn't even show the execution time when tested
