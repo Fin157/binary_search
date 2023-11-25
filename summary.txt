@@ -6,23 +6,43 @@ Trivial algorithm:
 
 Binary search:
 - Approximate time complexity:
--> [Best, Average, Worst] - O(log(n)) (We need to 'slice' the list log(n) times no matter what)
+-> [Best, Average, Worst] - O(log(n)) (We need to 'slice' the list log2(n) times no matter what (we're slicing the list in half every iteration) but the log base isn't really necessary to be written there as the resulting time complexity only differs constant-times from the original log2 which is fine for us when using the big O notation)
 
 With 10^18 items in the searched list on a computer capable of performing 10^9 operations per second:
-- Trivial O(n) algorithm -> Depends on the value's position in the list
--> Best - Some tiny portion of time
+- Trivial O(n) algorithm -> Depends on the value's position in the list:
+-> Best - 1 iteration of the for loop (only constant-time operations are performed) =>> Some tiny portion of time
 -> Average - 5 * 10^17 operations =>> 5 * 10^8 sec => 15.8 years
 -> Worst - 10^18 operations =>> 10^9 sec => 31.7 years
 - Binary search -> [log2(10^18) operations = approx. 60 operations] => 60 ns
 
 In practice (ran on my 1.8GHz laptop) with 10^18 items and different target value:
-- Trivial algorithm
+- Trivial algorithm:
 -> Actually tested:
     - 10^6 - 330 ms
     - 10^9 - 330 sec
--> Hypothetically:
+-> Hypothetically based on the tests' results:
     - 10^12 - approx. 4 days
     - 10^15 - approx. 3800 days
     - 10^18 - I'll be retired by the time this finishes executing
-- Binary search
+- Binary search:
 -> So fast it doesn't even show the execution time when tested
+
+Conclusion:
+- Trivial algorithm:
+-> Positives:
+    - Works
+    - Can be used on unsorted collections
+    - Took me about 30 seconds to write
+-> Negatives:
+    - Sucks way too much on sorted lists
+    - Works slower than me on Mondays
+    - A monkey could invent something better
+    - Execution takes more time than writing the code =>> There is no time saved
+- Binary search:
+-> Positives:
+    - Boi fast af go brrr
+    - A very tiny amount of operations needed even to process a list of the length of Python's integer max value (10^18)
+    - Takes a little longer to write than the trivial but saves lots of time afterwards
+    - The GOAT of algorithmic programming
+-> Negatives:
+    - Cannot work with unsorted lists <<= The best search time complexity in unsorted lists is O(n)

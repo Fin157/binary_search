@@ -17,4 +17,5 @@ def compare(l: list, v: int):
     binary_time = end_time - start_time
     print(binary_time)
 
+# With this setup, the trivial algorithm ran in about 330 seconds on my machine, any searched value over 10^9 takes way too long
 compare(range(1000000000000000000), 1000000000)
